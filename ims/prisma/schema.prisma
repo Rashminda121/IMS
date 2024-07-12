@@ -16,8 +16,8 @@ model User{
   name String
   email String
   password String
-  role  String  @default("user")
-  access Boolean @default(false)
+  role  String?  @default("user")
+  access Boolean? @default(false)
 
   createdAt DateTime @default(now())
   updateAt DateTime @updatedAt
