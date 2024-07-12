@@ -1,5 +1,6 @@
 "use client";
 
+import Navbar from "@/app/(routes)/components/navbar";
 import React, { useState } from "react";
 
 const SignupPage = () => {
@@ -39,7 +40,8 @@ const SignupPage = () => {
 
   return (
     <>
-      <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8 mb-10">
+      <Navbar />
+      <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8 mb-10 mt-10">
         <div className="sm:mx-auto sm:w-full sm:max-w-sm">
           <img
             alt="Your Company"

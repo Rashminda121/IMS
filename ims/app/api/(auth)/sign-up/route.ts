@@ -13,6 +13,22 @@ export async function POST(req: Request) {
       return new NextResponse("Passwords do not match", { status: 400 });
     }
 
+    const emailCheck = await db.user.findUnique({
+      where: {
+        email: email,
+      },
+    });
+
+    if (emailCheck) {
+      return new NextResponse(
+        JSON.stringify({
+          error: true,
+          message: "Email already registered",
+        }),
+        { status: 400 } // Using 400 for bad request due to duplicate email
+      );
+    }
+
     const user = await db.user.create({
       data: {
         name,

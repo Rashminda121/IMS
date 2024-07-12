@@ -1,7 +1,50 @@
+"use client";
+import Navbar from "@/app/(routes)/components/navbar";
+import React, { useState } from "react";
+
 const SigninPage = () => {
+  const [alertMessage, setAlertMessage] = useState<string | null>(null);
+
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    const formData = new FormData(event.currentTarget);
+    const data = {
+      email: formData.get("email") as string,
+      password: formData.get("password") as string,
+    };
+
+    try {
+      const response = await fetch("/api/sign-in", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+
+      const result = await response.json();
+
+      if (response.ok) {
+        setAlertMessage(`Success: ${result.message}`);
+        setTimeout(() => {
+          window.location.href = `/home?email=${encodeURIComponent(
+            data.email
+          )}`;
+        }, 1000);
+      } else {
+        setAlertMessage(`Error: ${result.message}`);
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      setAlertMessage("Error: Something went wrong");
+    }
+  };
+
   return (
     <>
-      <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
+      <Navbar />
+      <div className="flex mt-10 min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
         <div className="sm:mx-auto sm:w-full sm:max-w-sm">
           <img
             alt="Your Company"
@@ -14,7 +57,7 @@ const SigninPage = () => {
         </div>
 
         <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-          <form action="#" method="POST" className="space-y-6">
+          <form onSubmit={handleSubmit} className="space-y-6">
             <div>
               <label
                 htmlFor="email"
@@ -82,6 +125,12 @@ const SigninPage = () => {
               Create an account
             </a>
           </p>
+
+          {alertMessage && (
+            <div className="mt-4 p-2 bg-green-100 text-green-600 text-sm text-center rounded-md">
+              {alertMessage}
+            </div>
+          )}
         </div>
       </div>
     </>
