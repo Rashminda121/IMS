@@ -2,10 +2,14 @@
 
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import Navbar from "@/app/(routes)/components/navbar";
-import React, { useState } from "react";
-import Link from "next/link";
 
-const Admin = () => {
+import { getItemCount, getUserCount } from "@/lib/counts";
+
+const Admin = async () => {
+  const itemCount = await getItemCount();
+  const userCount = await getUserCount();
+  // console.log(item);
+
   return (
     <>
       <Navbar />
@@ -27,19 +31,25 @@ const Admin = () => {
               <p className="text-2xl sm:text-xl md:text-2xl text-black font-bold">
                 <i className="fa-solid fa-bag-shopping pr-4"></i>Items
               </p>
-              <h1 className="text-2xl text-indigo-700 font-bold mt-2">20</h1>
+              <h1 className="text-2xl text-indigo-700 font-bold mt-2">
+                - {itemCount} -
+              </h1>
+            </div>
+            <div className="p-10 bg-slate-100 border border-gray-200 shadow-md hover:shadow-xl hover:scale-105 transition duration-300 w-full">
+              <p className="text-2xl sm:text-xl md:text-2xl text-black font-bold ">
+                <i className="fa-solid fa-person pr-4"></i>Users
+              </p>
+              <h1 className="text-2xl text-indigo-700 font-bold mt-2">
+                - {userCount} -
+              </h1>
             </div>
             <div className="p-10 bg-slate-100 border border-gray-200 shadow-md hover:shadow-xl hover:scale-105 transition duration-300 w-full">
               <p className="text-2xl sm:text-xl md:text-2xl text-black font-bold ">
                 <i className="fa-solid fa-person pr-4"></i>Merchants
               </p>
-              <h1 className="text-2xl text-indigo-700 font-bold mt-2">20</h1>
-            </div>
-            <div className="p-10 bg-slate-100 border border-gray-200 shadow-md hover:shadow-xl hover:scale-105 transition duration-300 w-full">
-              <p className="text-2xl sm:text-xl md:text-2xl text-black font-bold ">
-                <i className="fa-solid fa-person pr-4"></i>users
-              </p>
-              <h1 className="text-2xl text-indigo-700 font-bold mt-2">20</h1>
+              <h1 className="text-2xl text-indigo-700 font-bold mt-2">
+                - 20 -
+              </h1>
             </div>
           </div>
         </div>
