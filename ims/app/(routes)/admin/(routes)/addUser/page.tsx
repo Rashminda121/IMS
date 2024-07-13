@@ -8,7 +8,7 @@ import "@fortawesome/fontawesome-free/css/all.min.css";
 const AddUsers = () => {
   // State variables
   const [alertMessage, setAlertMessage] = useState<string | null>(null);
-  const [access, setAccess] = useState<boolean>(true ?? false);
+  const [access, setAccess] = useState<boolean>(false);
 
   // Effect to log the state after it's updated
   useEffect(() => {
@@ -57,12 +57,10 @@ const AddUsers = () => {
         setAlertMessage(`Error: ${result.message}`);
       }
     } catch (error) {
-      // Handle fetch errors
       setAlertMessage("Error: Something went wrong");
     }
   };
 
-  // Render EditUsers component
   return (
     <>
       <Navbar />
@@ -74,7 +72,7 @@ const AddUsers = () => {
             className="mx-auto h-10 w-auto"
           />
           <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
-            Edit User account
+            AddUser account
           </h2>
         </div>
 
@@ -215,7 +213,7 @@ const AddUsers = () => {
 
           <p className="mt-5 text-center text-sm text-gray-500">
             <a
-              href="../users"
+              href="./users"
               className="font-semibold leading-6 text-black hover:text-indigo-500"
             >
               <i className="fa-solid fa-arrow-left pr-2"></i> Back

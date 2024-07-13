@@ -26,7 +26,7 @@ export default async function ViewUsers() {
           </div>
           <div className="mt-7">
             <a
-              href="./addItems"
+              href="./addUser"
               className="p-3 bg-indigo-700 text-white rounded-lg sm:text-sm md:text-md"
             >
               Add Users
@@ -95,7 +95,7 @@ export default async function ViewUsers() {
 
                     <td className="px-6 py-4 whitespace-nowrap text-sm sm:text-base text-gray-500">
                       <Link
-                        href={`./deleteItems/${user.id}`}
+                        href={`./deleteUser/${user.id}`}
                         className="block w-full rounded-md border-0 px-1.5 py-1.5 text-white bg-red-500 sm:text-sm sm:leading-6"
                       >
                         Delete
