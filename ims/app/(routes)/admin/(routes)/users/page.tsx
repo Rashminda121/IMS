@@ -5,8 +5,8 @@ import { db } from "@/lib/db";
 import Link from "next/link";
 import React, { useState } from "react";
 
-export default async function ViewItem() {
-  const items = await db.item.findMany();
+export default async function ViewUsers() {
+  const users = await db.user.findMany();
 
   return (
     <>
@@ -21,7 +21,7 @@ export default async function ViewItem() {
               className="mx-auto h-10 w-auto"
             />
             <h2 className="mt-10 text-center text-3xl font-bold leading-9 tracking-tight text-gray-900">
-              View Items
+              View Users
             </h2>
           </div>
           <div className="mt-7">
@@ -29,7 +29,7 @@ export default async function ViewItem() {
               href="./addItems"
               className="p-3 bg-indigo-700 text-white rounded-lg sm:text-sm md:text-md"
             >
-              Add Items
+              Add Users
             </a>
           </div>
 
@@ -41,13 +41,17 @@ export default async function ViewItem() {
                     Name
                   </th>
                   <th className="px-6 py-3 text-xs sm:text-sm font-semibold uppercase tracking-wider">
-                    Code
+                    Email
                   </th>
                   <th className="px-6 py-3 text-xs sm:text-sm font-semibold uppercase tracking-wider">
-                    Price(Rs)
+                    Password
+                  </th>
+
+                  <th className="px-6 py-3 text-xs sm:text-sm font-semibold uppercase tracking-wider">
+                    Role
                   </th>
                   <th className="px-6 py-3 text-xs sm:text-sm font-semibold uppercase tracking-wider">
-                    Quantity
+                    Access
                   </th>
                   <th className="px-6 py-3 text-xs sm:text-sm font-semibold uppercase tracking-wider">
                     Edit
@@ -59,37 +63,39 @@ export default async function ViewItem() {
               </thead>
 
               <tbody className="bg-gray-100 divide-y divide-gray-200 text-center">
-                {items.map((item) => (
-                  <tr key={item.id} className="border shadow-md">
-                    {/* Name column */}
+                {users.map((user) => (
+                  <tr key={user.id} className="border shadow-md">
                     <td className="px-6 py-4 whitespace-nowrap text-sm sm:text-base font-medium text-gray-900">
-                      {item.name}
+                      {user.name}
                     </td>
-                    {/* Code column */}
-                    <td className="px-6 py-4 whitespace-nowrap text-sm sm:text-base font-medium text-gray-500">
-                      {item.code}
+
+                    <td className="px-6 py-4 whitespace-nowrap text-sm sm:text-base font-medium text-gray-900">
+                      {user.email}
                     </td>
-                    {/* Price column */}
-                    <td className="px-6 py-4 whitespace-nowrap text-sm sm:text-base font-medium text-gray-500">
-                      {item.price}
+
+                    <td className="px-6 py-4 whitespace-nowrap text-sm sm:text-base font-medium text-gray-900">
+                      {user.password}
                     </td>
-                    {/* Quantity column */}
-                    <td className="px-6 py-4 whitespace-nowrap text-sm sm:text-base font-medium text-gray-500">
-                      {item.quantity}
+
+                    <td className="px-6 py-4 whitespace-nowrap text-sm sm:text-base font-medium text-gray-900">
+                      {user.role}
                     </td>
-                    {/* Edit button column */}
-                    <td className="px-6 py-4 whitespace-nowrap text-sm sm:text-base font-medium text-gray-500">
+                    <td className="px-6 py-4 whitespace-nowrap text-sm sm:text-base font-medium text-gray-900">
+                      {user.access ? "Enabled" : "Disabled"}
+                    </td>
+
+                    <td className="px-6 py-4 whitespace-nowrap text-sm sm:text-base font-medium text-gray-900">
                       <Link
-                        href={`./editItems/${item.id}`}
+                        href={`./editUsers/${user.id}`}
                         className="btn-edit block w-full rounded-md border-0 px-3 py-1.5 text-white bg-indigo-600 sm:text-sm sm:leading-6"
                       >
                         Edit
                       </Link>
                     </td>
-                    {/* Delete button column */}
+
                     <td className="px-6 py-4 whitespace-nowrap text-sm sm:text-base text-gray-500">
                       <Link
-                        href={`./deleteItems/${item.id}`}
+                        href={`./deleteItems/${user.id}`}
                         className="block w-full rounded-md border-0 px-1.5 py-1.5 text-white bg-red-500 sm:text-sm sm:leading-6"
                       >
                         Delete

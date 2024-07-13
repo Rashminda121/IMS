@@ -54,11 +54,11 @@ const Admin = () => {
               </div>
             </a>
             <div className="p-5 bg-indigo-600 rounded-lg shadow-md hover:shadow-xl hover:scale-105 transition duration-300">
-              <Link href={"./addItems"}>
+              <a href="./admin/users">
                 <h2 className="text-md sm:text-xl md:text-2xl text-white font-semibold">
                   <i className="fa-solid fa-pencil pr-4"></i>Users
                 </h2>
-              </Link>
+              </a>
             </div>
             <div className="p-5 bg-indigo-600 rounded-lg shadow-md hover:shadow-xl hover:scale-105 transition duration-300">
               <h2 className="text-sm sm:text-xl md:text-2xl text-white font-semibold">

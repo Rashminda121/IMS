@@ -27,3 +27,14 @@ export const getItemById = async (id: string) => {
     throw new Error("Failed to fetch data");
   }
 };
+
+export const getUserById = async (id: string) => {
+  try {
+    const item = await db.user.findUnique({
+      where: { id },
+    });
+    return item;
+  } catch (error) {
+    throw new Error("Failed to fetch data");
+  }
+};
