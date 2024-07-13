@@ -19,24 +19,42 @@ export async function POST(req: Request) {
       },
     });
 
-    if (user && user.password === password) {
-      // Password matches, return success response
+    if (user && user.password === password && user.role === "manager") {
       return new NextResponse(
         JSON.stringify({
-          success: true,
+          manager: true,
+          message: "Authentication successful!",
+        }),
+        { status: 200 }
+      );
+    } else if (user && user.password === password && user.role === "admin") {
+      return new NextResponse(
+        JSON.stringify({
+          admin: true,
           message: "Authentication successful!",
         }),
         { status: 200 }
       );
     } else {
-      // Either user not found or password does not match
-      return new NextResponse(
-        JSON.stringify({
-          error: true,
-          message: "Invalid email or password",
-        }),
-        { status: 401 }
-      );
+      if (user && user.password === password) {
+        // Password matches, return success response
+        return new NextResponse(
+          JSON.stringify({
+            success: true,
+            message: "Authentication successful!",
+          }),
+          { status: 200 }
+        );
+      } else {
+        // Either user not found or password does not match
+        return new NextResponse(
+          JSON.stringify({
+            error: true,
+            message: "Invalid email or password",
+          }),
+          { status: 401 }
+        );
+      }
     }
   } catch (error) {
     console.error("[AUTH]", error);
