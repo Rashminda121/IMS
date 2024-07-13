@@ -24,15 +24,15 @@ export async function POST(req: Request) {
       },
     });
 
-    if (codeCheck) {
-      return new NextResponse(
-        JSON.stringify({
-          error: true,
-          message: "Item Code Already Existing",
-        }),
-        { status: 400 } // Using 400 for bad request due to duplicate email
-      );
-    }
+    // if (codeCheck.length > 0) {
+    //   return new NextResponse(
+    //     JSON.stringify({
+    //       error: true,
+    //       message: "Item Code Already Exists",
+    //     }),
+    //     { status: 400 }
+    //   );
+    // }
 
     return new NextResponse(
       JSON.stringify({

@@ -30,7 +30,7 @@ export default async function ViewItem() {
                   Code
                 </th>
                 <th className="px-6 py-3 text-xs sm:text-sm font-semibold text-white uppercase tracking-wider">
-                  Price
+                  Price per unit
                 </th>
                 <th className="px-6 py-3 text-xs sm:text-sm font-semibold text-white uppercase tracking-wider">
                   Quantity

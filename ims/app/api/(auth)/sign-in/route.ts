@@ -19,7 +19,12 @@ export async function POST(req: Request) {
       },
     });
 
-    if (user && user.password === password && user.role === "manager") {
+    if (
+      user &&
+      user.password === password &&
+      user.role === "manager" &&
+      user.access === true
+    ) {
       return new NextResponse(
         JSON.stringify({
           manager: true,
@@ -36,7 +41,7 @@ export async function POST(req: Request) {
         { status: 200 }
       );
     } else {
-      if (user && user.password === password) {
+      if (user && user.password === password && user.access === true) {
         // Password matches, return success response
         return new NextResponse(
           JSON.stringify({
@@ -44,6 +49,15 @@ export async function POST(req: Request) {
             message: "Authentication successful!",
           }),
           { status: 200 }
+        );
+      } else if (user && user.password === password && user.access != true) {
+        // Password matches, return success response
+        return new NextResponse(
+          JSON.stringify({
+            error: true,
+            message: "Currently your account is disabled",
+          }),
+          { status: 401 }
         );
       } else {
         // Either user not found or password does not match
