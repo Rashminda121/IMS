@@ -4,23 +4,23 @@ import Navbar from "@/app/(routes)/components/navbar";
 import React, { useState } from "react";
 import type { Item } from "@prisma/client";
 
-const EditItem = ({ item }: { item: Item }) => {
+const DeleteItem = ({ item }: { item: Item }) => {
   const [alertMessage, setAlertMessage] = useState<string | null>(null);
+  const [showConfirmation, setShowConfirmation] = useState(false);
 
-  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
+  const handleDeleteClick = () => {
+    setShowConfirmation(true);
+  };
 
-    const formData = new FormData(event.currentTarget);
+  const handleConfirmDelete = async () => {
+    setShowConfirmation(false);
+
     const data = {
       id: item.id,
-      name: formData.get("name") as string,
-      code: formData.get("code") as string,
-      price: formData.get("price") as string,
-      quantity: formData.get("quantity") as string,
     };
 
     try {
-      const response = await fetch("/api/updateItem", {
+      const response = await fetch("/api/deleteItem", {
         method: "POST",
         body: new URLSearchParams(data),
       });
@@ -29,16 +29,17 @@ const EditItem = ({ item }: { item: Item }) => {
 
       if (response.ok) {
         setAlertMessage(`Success: ${result.message}`);
-
-        setTimeout(() => {
-          window.location.reload();
-        }, 2000);
+        window.location.href = "../items";
       } else {
         setAlertMessage(`Error: ${result.message}`);
       }
     } catch (error) {
       setAlertMessage("Error: Something went wrong");
     }
+  };
+
+  const handleCancelDelete = () => {
+    setShowConfirmation(false);
   };
 
   return (
@@ -52,7 +53,7 @@ const EditItem = ({ item }: { item: Item }) => {
             className="mx-auto h-10 w-auto"
           />
           <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
-            Edit items
+            Delete items
           </h2>
         </div>
 
@@ -69,7 +70,7 @@ const EditItem = ({ item }: { item: Item }) => {
               {alertMessage}
             </div>
           )}
-          <form onSubmit={handleSubmit} className="space-y-6">
+          <form className="space-y-6">
             <div>
               <label
                 htmlFor="name"
@@ -83,6 +84,7 @@ const EditItem = ({ item }: { item: Item }) => {
                   name="name"
                   type="text"
                   required
+                  disabled
                   defaultValue={item.name}
                   className="block w-full rounded-md border-0 px-1.5 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
@@ -103,6 +105,7 @@ const EditItem = ({ item }: { item: Item }) => {
                   type="code"
                   required
                   autoComplete="code"
+                  disabled
                   defaultValue={item.code}
                   className="block w-full rounded-md border-0 px-1.5 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
@@ -125,6 +128,7 @@ const EditItem = ({ item }: { item: Item }) => {
                   type="number"
                   required
                   autoComplete="current-price"
+                  disabled
                   defaultValue={
                     item.price !== null && item.price !== undefined
                       ? item.price.toString()
@@ -138,10 +142,10 @@ const EditItem = ({ item }: { item: Item }) => {
             <div>
               <div className="flex items-center justify-between">
                 <label
-                  htmlFor="price"
+                  htmlFor="quantity"
                   className="block text-sm font-medium leading-6 text-gray-900"
                 >
-                  Item Qauntity
+                  Item Quantity
                 </label>
               </div>
               <div className="mt-2">
@@ -150,6 +154,7 @@ const EditItem = ({ item }: { item: Item }) => {
                   name="quantity"
                   type="number"
                   required
+                  disabled
                   autoComplete="quantity"
                   defaultValue={
                     item.quantity !== null && item.quantity !== undefined
@@ -162,10 +167,11 @@ const EditItem = ({ item }: { item: Item }) => {
             </div>
             <div>
               <button
-                type="submit"
+                type="button"
+                onClick={handleDeleteClick}
                 className="flex w-full justify-center mt-6 rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
               >
-                Update
+                Delete
               </button>
             </div>
           </form>
@@ -180,8 +186,35 @@ const EditItem = ({ item }: { item: Item }) => {
           </p>
         </div>
       </div>
+
+      {showConfirmation && (
+        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
+          <div className="bg-white rounded-lg p-6 max-w-sm mx-auto">
+            <h3 className="text-lg font-medium text-gray-900">
+              Confirm Deletion
+            </h3>
+            <p className="mt-2 text-sm text-gray-600">
+              Are you sure you want to delete the item "{item.name}"?
+            </p>
+            <div className="mt-4 flex justify-end space-x-2">
+              <button
+                onClick={handleCancelDelete}
+                className="rounded-md bg-gray-200 px-3 py-1.5 text-sm font-semibold text-gray-700 hover:bg-gray-300"
+              >
+                Cancel
+              </button>
+              <button
+                onClick={handleConfirmDelete}
+                className="rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold text-white hover:bg-indigo-500"
+              >
+                Delete
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </>
   );
 };
 
-export default EditItem;
+export default DeleteItem;

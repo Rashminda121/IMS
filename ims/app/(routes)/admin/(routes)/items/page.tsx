@@ -3,10 +3,9 @@
 import Navbar from "@/app/(routes)/components/navbar";
 import { db } from "@/lib/db";
 import Link from "next/link";
+import React, { useState } from "react";
 
-// ViewItem component definition
 export default async function ViewItem() {
-  // Fetch items from the database
   const items = await db.item.findMany();
 
   return (
@@ -21,9 +20,14 @@ export default async function ViewItem() {
               src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
               className="mx-auto h-10 w-auto"
             />
-            <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
+            <h2 className="mt-10 text-center text-3xl font-bold leading-9 tracking-tight text-gray-900">
               View Items
             </h2>
+          </div>
+          <div className="mt-7">
+            <a className="p-3 bg-indigo-700 text-white rounded-lg sm:text-sm md:text-md">
+              Add Items
+            </a>
           </div>
 
           <div className="overflow-x-auto overflow-y-auto mt-5">
@@ -53,61 +57,25 @@ export default async function ViewItem() {
 
               <tbody className="bg-gray-100 divide-y divide-gray-200 text-center">
                 {items.map((item) => (
-                  <tr key={item.id}>
+                  <tr key={item.id} className="border shadow-md">
                     {/* Name column */}
                     <td className="px-6 py-4 whitespace-nowrap text-sm sm:text-base font-medium text-gray-900">
-                      <input
-                        id="name"
-                        name="name"
-                        type="text"
-                        required
-                        value={item.name}
-                        className="input-cell block w-full rounded-md border-0 px-1.5 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                      />
+                      {item.name}
                     </td>
                     {/* Code column */}
-                    <td className="px-6 py-4 whitespace-nowrap text-sm sm:text-base text-gray-500">
-                      <input
-                        id="code"
-                        name="code"
-                        type="text"
-                        required
-                        value={item.code}
-                        className="input-cell block w-full rounded-md border-0 px-1.5 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                      />
+                    <td className="px-6 py-4 whitespace-nowrap text-sm sm:text-base font-medium text-gray-500">
+                      {item.code}
                     </td>
                     {/* Price column */}
-                    <td className="px-6 py-4 whitespace-nowrap text-sm sm:text-base text-gray-500">
-                      <input
-                        id="price"
-                        name="price"
-                        type="number"
-                        required
-                        value={
-                          item.price !== null && item.price !== undefined
-                            ? item.price.toString()
-                            : ""
-                        }
-                        className="input-cell block w-full rounded-md border-0 px-1.5 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                      />
+                    <td className="px-6 py-4 whitespace-nowrap text-sm sm:text-base font-medium text-gray-500">
+                      {item.price}
                     </td>
                     {/* Quantity column */}
-                    <td className="px-6 py-4 whitespace-nowrap text-sm sm:text-base text-gray-500">
-                      <input
-                        id="quantity"
-                        name="quantity"
-                        type="number"
-                        required
-                        value={
-                          item.quantity !== null && item.quantity !== undefined
-                            ? item.quantity.toString()
-                            : ""
-                        }
-                        className="input-cell block w-full rounded-md border-0 px-1.5 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                      />
+                    <td className="px-6 py-4 whitespace-nowrap text-sm sm:text-base font-medium text-gray-500">
+                      {item.quantity}
                     </td>
                     {/* Edit button column */}
-                    <td className="px-6 py-4 whitespace-nowrap text-sm sm:text-base text-gray-500">
+                    <td className="px-6 py-4 whitespace-nowrap text-sm sm:text-base font-medium text-gray-500">
                       <Link
                         href={`./editItems/${item.id}`}
                         className="btn-edit block w-full rounded-md border-0 px-3 py-1.5 text-white bg-indigo-600 sm:text-sm sm:leading-6"
@@ -117,14 +85,12 @@ export default async function ViewItem() {
                     </td>
                     {/* Delete button column */}
                     <td className="px-6 py-4 whitespace-nowrap text-sm sm:text-base text-gray-500">
-                      <input
-                        id="delete"
-                        name="delete"
-                        type="submit"
-                        required
-                        value={"Delete"}
+                      <Link
+                        href={`./deleteItems/${item.id}`}
                         className="block w-full rounded-md border-0 px-1.5 py-1.5 text-white bg-red-500 sm:text-sm sm:leading-6"
-                      />
+                      >
+                        Delete
+                      </Link>
                     </td>
                   </tr>
                 ))}
