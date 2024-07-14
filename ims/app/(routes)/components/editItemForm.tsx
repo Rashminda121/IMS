@@ -101,7 +101,7 @@ const EditItem = ({ item }: { item: Item }) => {
                 <input
                   id="code"
                   name="code"
-                  type="code"
+                  type="text"
                   required
                   autoComplete="code"
                   defaultValue={item.code}

@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "email": "email dev"
   },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^6.5.2",
@@ -16,6 +17,9 @@
     "@prisma/client": "^5.16.2",
     "@radix-ui/react-label": "^2.1.0",
     "@radix-ui/react-slot": "^1.1.0",
+    "@react-email/components": "0.0.21",
+    "@react-email/render": "^0.0.16",
+    "@react-email/tailwind": "^0.0.18",
     "@types/uuid": "^10.0.0",
     "@uploadcare/react-uploader": "^0.6.1",
     "@uploadthing/react": "^6.7.2",
@@ -28,11 +32,12 @@
     "multer": "^1.4.5-lts.1",
     "multiparty": "^4.2.3",
     "next": "^14.2.5",
-    "react": "^18",
-    "react-dom": "^18",
+     "react": "^18.2.0", 
+    "react-dom": "^18.2.0",
     "react-dropzone": "^14.2.3",
     "react-hook-form": "^7.52.1",
     "react-hot-toast": "^2.4.1",
+    "resend": "^0.16.0",
     "tailwind-merge": "^2.4.0",
     "tailwindcss-animate": "^1.0.7",
     "uploadthing": "^6.13.2",
@@ -41,6 +46,7 @@
   },
   "devDependencies": {
     "@types/multer": "^1.4.11",
+    "@types/next": "^9.0.0",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
