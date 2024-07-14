@@ -5,6 +5,7 @@ type MenuItem = "Home" | "About"; // Define type for menu items
 export default function Nav() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeMenuItem, setActiveMenuItem] = useState<MenuItem>("Home"); // Initial active menu item
+  const [showConfirmModal, setShowConfirmModal] = useState(false);
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
@@ -13,6 +14,19 @@ export default function Nav() {
   const handleMenuItemClick = (item: MenuItem) => {
     setActiveMenuItem(item);
     // Additional logic if needed on menu item click
+  };
+
+  const handleLogoutClick = () => {
+    setShowConfirmModal(true);
+  };
+
+  const confirmLogout = () => {
+    // Perform logout action here
+    window.location.href = "../../sign-in"; // Redirect to logout page
+  };
+
+  const cancelLogout = () => {
+    setShowConfirmModal(false);
   };
 
   return (
@@ -32,8 +46,9 @@ export default function Nav() {
           <button
             type="button"
             className="text-white bg-indigo-700 hover:bg-indigo-500 focus:ring-4 focus:outline-none focus:ring-indigo-300 font-medium rounded-lg text-sm px-4 py-2 text-center dark:bg-indigo-600 dark:hover:bg-indigo-700 dark:focus:ring-indigo-800"
+            onClick={handleLogoutClick}
           >
-            <a href="../../sign-in">Logout</a>
+            Logout
           </button>
           <button
             onClick={toggleMenu}
@@ -60,6 +75,50 @@ export default function Nav() {
           </button>
         </div>
       </div>
+
+      {/* Confirmation Modal */}
+      {showConfirmModal && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center overflow-x-hidden overflow-y-auto outline-none focus:outline-none">
+          <div className="relative w-auto max-w-sm mx-auto my-6">
+            {/* Content */}
+            <div className="relative flex flex-col w-full bg-indigo-50 border-0 rounded-lg shadow-lg outline-none focus:outline-none">
+              {/* Header */}
+              <div className="flex items-start justify-between p-5 border-b border-solid rounded-t border-blueGray-200">
+                <h3 className="text-xl font-semibold">Confirm Logout</h3>
+                <button
+                  className="p-1 ml-auto bg-transparent border-0 text-black opacity-5 float-right text-3xl leading-none font-semibold outline-none focus:outline-none"
+                  onClick={cancelLogout}
+                >
+                  <span className="text-black opacity-50">×</span>
+                </button>
+              </div>
+              {/* Body */}
+              <div className="relative p-6">
+                <p className="my-4 text-blueGray-500 text-lg leading-relaxed">
+                  Are you sure you want to logout?
+                </p>
+              </div>
+              {/* Footer */}
+              <div className="flex items-center justify-end p-6 border-t border-solid rounded-b border-blueGray-200">
+                <button
+                  className="text-white bg-indigo-500 font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                  type="button"
+                  onClick={confirmLogout}
+                >
+                  Logout
+                </button>
+                <button
+                  className="text-black bg-transparent border border-solid border-blueGray-500 font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                  type="button"
+                  onClick={cancelLogout}
+                >
+                  Cancel
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </nav>
   );
 }
