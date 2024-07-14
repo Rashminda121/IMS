@@ -9,10 +9,10 @@ const About = () => {
       <UserNavbar />
       <div className="relative min-h-screen flex flex-col justify-center px-6 py-12 lg:px-8">
         <div
-          className="absolute inset-0 bg-center bg-no-repeat opacity-40"
+          className="absolute inset-0 bg-center bg-no-repeat opacity-20"
           style={{
             backgroundImage: "url('./img/shape.png')",
-            backgroundSize: "60%",
+            backgroundSize: "50%",
           }}
         ></div>
         <div className="relative flex mt-10 flex-1 flex-col justify-center">
