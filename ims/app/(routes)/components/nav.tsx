@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 type MenuItem = "Home" | "About"; // Define type for menu items
 
-export default function Navbar() {
+export default function Nav() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeMenuItem, setActiveMenuItem] = useState<MenuItem>("Home"); // Initial active menu item
 
@@ -33,7 +33,7 @@ export default function Navbar() {
             type="button"
             className="text-white bg-indigo-700 hover:bg-indigo-500 focus:ring-4 focus:outline-none focus:ring-indigo-300 font-medium rounded-lg text-sm px-4 py-2 text-center dark:bg-indigo-600 dark:hover:bg-indigo-700 dark:focus:ring-indigo-800"
           >
-            Login
+            <a href="./sign-in">Logout</a>
           </button>
           <button
             onClick={toggleMenu}
@@ -58,41 +58,6 @@ export default function Navbar() {
               />
             </svg>
           </button>
-        </div>
-        <div
-          className={`items-center justify-between w-full md:flex md:w-auto md:order-1 ${
-            menuOpen ? "" : "hidden"
-          }`}
-          id="navbar-sticky"
-        >
-          <ul className="flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
-            <li>
-              <a
-                href="./"
-                className={`block py-2 px-3 rounded ${
-                  activeMenuItem === "Home"
-                    ? "text-indigo-600 bg-gray-100 dark:bg-gray-700 dark:text-white"
-                    : "text-gray-900 hover:text-indigo-600 hover:bg-gray-100 dark:hover:text-white dark:hover:bg-gray-700"
-                } md:bg-transparent md:p-0 md:dark:text-indigo-500 md:dark:hover:text-indigo-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700`}
-                onClick={() => handleMenuItemClick("Home")}
-              >
-                Home
-              </a>
-            </li>
-            <li>
-              <a
-                href="#"
-                className={`block py-2 px-3 rounded ${
-                  activeMenuItem === "About"
-                    ? "text-indigo-600 bg-gray-100 dark:bg-gray-700 dark:text-white"
-                    : "text-gray-900 hover:text-indigo-600 hover:bg-gray-100 dark:hover:text-white dark:hover:bg-gray-700"
-                } md:bg-transparent md:p-0 md:dark:text-indigo-500 md:dark:hover:text-indigo-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700`}
-                onClick={() => handleMenuItemClick("About")}
-              >
-                About
-              </a>
-            </li>
-          </ul>
         </div>
       </div>
     </nav>

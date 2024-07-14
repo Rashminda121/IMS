@@ -1,17 +1,18 @@
 "use client";
 
 import "@fortawesome/fontawesome-free/css/all.min.css";
-import Navbar from "@/app/(routes)/components/navbar";
+
 import React, { useState } from "react";
 import Link from "next/link";
 import { getItemCount, getMerchantCount } from "@/lib/counts";
+import ManagerNavbar from "./(routes)/navbar/page";
 
 const Manager = async () => {
   const merchantCount = await getMerchantCount();
   const itemCount = await getItemCount();
   return (
     <>
-      <Navbar />
+      <ManagerNavbar />
       <div className="flex mt-10 min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
         <div className="sm:mx-auto sm:w-full sm:max-w-sm">
           <img

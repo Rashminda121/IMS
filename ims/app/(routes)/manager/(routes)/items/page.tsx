@@ -1,16 +1,16 @@
 // Import necessary modules and components
 "use client";
-import Navbar from "@/app/(routes)/components/navbar";
 import { db } from "@/lib/db";
 import Link from "next/link";
 import React, { useState } from "react";
+import ManagerNavbar from "../navbar/page";
 
 export default async function ViewItem() {
   const items = await db.item.findMany();
 
   return (
     <>
-      <Navbar />
+      <ManagerNavbar />
 
       <div className="flex min-h-screen justify-center items-center px-6 py-12 lg:px-8 mb-10 mt-10">
         <div className="w-full">

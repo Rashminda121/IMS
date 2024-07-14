@@ -1,8 +1,9 @@
 "use client";
-import Navbar from "@/app/(routes)/components/navbar";
+
 import { Merchant } from "@prisma/client";
 import React, { useState, useEffect } from "react";
 import "@fortawesome/fontawesome-free/css/all.min.css";
+import Nav from "./nav";
 
 // Define EditUsers component
 const EditMerchant = ({ merchant }: { merchant: Merchant }) => {
@@ -54,7 +55,7 @@ const EditMerchant = ({ merchant }: { merchant: Merchant }) => {
   // Render EditUsers component
   return (
     <>
-      <Navbar />
+      <Nav />
       <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8 mb-10 mt-10">
         <div className="sm:mx-auto sm:w-full sm:max-w-sm">
           <img

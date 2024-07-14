@@ -1,17 +1,17 @@
 // Import necessary modules and components
 "use client";
-import Navbar from "@/app/(routes)/components/navbar";
+
 import { db } from "@/lib/db";
 import Link from "next/link";
 import React, { useState } from "react";
-
+import AdminNavbar from "../navbar/navbar";
 
 export default async function ViewUsers() {
   const users = await db.user.findMany();
 
   return (
     <>
-      <Navbar />
+      <AdminNavbar />
 
       <div className="flex min-h-screen justify-center items-center px-6 py-12 lg:px-8 mb-10 mt-10">
         <div className="w-full">

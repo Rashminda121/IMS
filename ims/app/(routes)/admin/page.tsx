@@ -1,9 +1,8 @@
 "use client";
 
 import "@fortawesome/fontawesome-free/css/all.min.css";
-import Navbar from "@/app/(routes)/components/navbar";
-
 import { getItemCount, getMerchantCount, getUserCount } from "@/lib/counts";
+import AdminNavbar from "./(routes)/navbar/navbar";
 
 const Admin = async () => {
   const itemCount = await getItemCount();
@@ -13,7 +12,7 @@ const Admin = async () => {
 
   return (
     <>
-      <Navbar />
+      <AdminNavbar />
       <div className="flex mt-10 min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
         <div className="sm:mx-auto sm:w-full sm:max-w-sm">
           <img

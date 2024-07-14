@@ -1,12 +1,12 @@
 "use client";
 import { db } from "@/lib/db";
-import Navbar from "./navbar";
+import Nav from "./nav";
 
 export default async function ViewItem() {
   const items = await db.item.findMany();
   return (
     <>
-      <Navbar />
+      <Nav />
       <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8 mb-10 mt-10">
         <div className="sm:mx-auto sm:w-full sm:max-w-sm">
           <img
