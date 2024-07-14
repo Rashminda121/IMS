@@ -2,6 +2,7 @@
 
 import Navbar from "@/app/(routes)/components/navbar";
 import React, { useState } from "react";
+import "@fortawesome/fontawesome-free/css/all.min.css";
 
 const AddItem = () => {
   const [alertMessage, setAlertMessage] = useState<string | null>(null);
@@ -162,7 +163,7 @@ const AddItem = () => {
               href="./"
               className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500"
             >
-              Return
+              <i className="fa-solid fa-arrow-left pr-2"></i> Back
             </a>
           </p>
         </div>

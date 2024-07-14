@@ -1,6 +1,7 @@
 "use client";
 import { db } from "@/lib/db";
 import Navbar from "../../components/navbar";
+import "@fortawesome/fontawesome-free/css/all.min.css";
 
 export default async function ViewItem() {
   const items = await db.item.findMany();
@@ -63,7 +64,7 @@ export default async function ViewItem() {
               href="./manager"
               className=" p-5 font-semibold leading-6 text-indigo-600 hover:text-indigo-500 bg-slate-200 rounded-lg"
             >
-              Return
+              <i className="fa-solid fa-arrow-left pr-2"></i> Back
             </a>
           </p>
         </div>

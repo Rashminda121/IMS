@@ -4,6 +4,7 @@ import Navbar from "@/app/(routes)/components/navbar";
 import { db } from "@/lib/db";
 import Link from "next/link";
 import React, { useState } from "react";
+import "@fortawesome/fontawesome-free/css/all.min.css";
 
 export default async function ViewUsers() {
   const users = await db.user.findMany();
@@ -113,7 +114,7 @@ export default async function ViewUsers() {
               href="./"
               className="block px-5 py-2 font-semibold leading-6 text-indigo-600 hover:text-indigo-500 bg-gray-200 rounded-lg"
             >
-              Return
+              <i className="fa-solid fa-arrow-left pr-2"></i> Back
             </a>
           </div>
         </div>

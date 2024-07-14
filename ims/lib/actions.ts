@@ -38,3 +38,14 @@ export const getUserById = async (id: string) => {
     throw new Error("Failed to fetch data");
   }
 };
+
+export const getMerchantById = async (id: string) => {
+  try {
+    const merchant = await db.merchant.findUnique({
+      where: { id },
+    });
+    return merchant;
+  } catch (error) {
+    throw new Error("Failed to fetch data");
+  }
+};

@@ -40,3 +40,16 @@ model Item{
 }
 
 
+model Merchant{
+  id String @id @default(uuid())
+  name String
+  email String @unique
+  phone String
+  address String
+
+  createdAt DateTime @default(now())
+  updateAt DateTime @updatedAt
+
+  @@index([id])
+}
+

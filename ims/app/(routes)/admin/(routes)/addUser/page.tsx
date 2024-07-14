@@ -72,7 +72,7 @@ const AddUsers = () => {
             className="mx-auto h-10 w-auto"
           />
           <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
-            AddUser account
+            Add User account
           </h2>
         </div>
 

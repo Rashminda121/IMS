@@ -3,11 +3,12 @@
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import Navbar from "@/app/(routes)/components/navbar";
 
-import { getItemCount, getUserCount } from "@/lib/counts";
+import { getItemCount, getMerchantCount, getUserCount } from "@/lib/counts";
 
 const Admin = async () => {
   const itemCount = await getItemCount();
   const userCount = await getUserCount();
+  const merchantCount = await getMerchantCount();
   // console.log(item);
 
   return (
@@ -48,7 +49,7 @@ const Admin = async () => {
                 <i className="fa-solid fa-person pr-4"></i>Merchants
               </p>
               <h1 className="text-2xl text-indigo-700 font-bold mt-2">
-                - 20 -
+                - {merchantCount} -
               </h1>
             </div>
           </div>
@@ -71,9 +72,11 @@ const Admin = async () => {
               </a>
             </div>
             <div className="p-5 bg-indigo-600 rounded-lg shadow-md hover:shadow-xl hover:scale-105 transition duration-300">
-              <h2 className="text-sm sm:text-xl md:text-2xl text-white font-semibold">
-                <i className="fa-solid fa-person pr-4"></i>Merchants
-              </h2>
+              <a href="./admin/merchants">
+                <h2 className="text-sm sm:text-xl md:text-2xl text-white font-semibold">
+                  <i className="fa-solid fa-person pr-4"></i>Merchants
+                </h2>
+              </a>
             </div>
           </div>
         </div>

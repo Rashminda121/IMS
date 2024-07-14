@@ -17,3 +17,12 @@ export const getUserCount = async () => {
     throw new Error("Failed to fetch item count");
   }
 };
+
+export const getMerchantCount = async () => {
+  try {
+    const merchantCount = await db.merchant.count();
+    return merchantCount;
+  } catch (error) {
+    throw new Error("Failed to fetch item count");
+  }
+};

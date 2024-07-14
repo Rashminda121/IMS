@@ -1,13 +1,11 @@
-// Import necessary modules and components
 "use client";
 import Navbar from "@/app/(routes)/components/navbar";
 import { db } from "@/lib/db";
 import Link from "next/link";
 import React, { useState } from "react";
-import "@fortawesome/fontawesome-free/css/all.min.css";
 
-export default async function ViewItem() {
-  const items = await db.item.findMany();
+export default async function ViewMerchants() {
+  const merchants = await db.merchant.findMany();
 
   return (
     <>
@@ -22,15 +20,15 @@ export default async function ViewItem() {
               className="mx-auto h-10 w-auto"
             />
             <h2 className="mt-10 text-center text-3xl font-bold leading-9 tracking-tight text-gray-900">
-              View Items
+              View Merchants
             </h2>
           </div>
           <div className="mt-7">
             <a
-              href="./addItems"
+              href="./addMerchant"
               className="p-3 bg-indigo-700 text-white rounded-lg sm:text-sm md:text-md"
             >
-              Add Items
+              Add Merchant
             </a>
           </div>
 
@@ -42,58 +40,44 @@ export default async function ViewItem() {
                     Name
                   </th>
                   <th className="px-6 py-3 text-xs sm:text-sm font-semibold uppercase tracking-wider">
-                    Code
+                    Email
                   </th>
                   <th className="px-6 py-3 text-xs sm:text-sm font-semibold uppercase tracking-wider">
-                    Price(Rs)
+                    Phone
                   </th>
                   <th className="px-6 py-3 text-xs sm:text-sm font-semibold uppercase tracking-wider">
-                    Quantity
+                    Address
                   </th>
                   <th className="px-6 py-3 text-xs sm:text-sm font-semibold uppercase tracking-wider">
-                    Edit
-                  </th>
-                  <th className="px-6 py-3 text-xs sm:text-sm font-semibold uppercase tracking-wider">
-                    Delete
+                    Mail
                   </th>
                 </tr>
               </thead>
 
               <tbody className="bg-gray-100 divide-y divide-gray-200 text-center">
-                {items.map((item) => (
-                  <tr key={item.id} className="border shadow-md">
-                    {/* Name column */}
+                {merchants.map((merch) => (
+                  <tr key={merch.id} className="border shadow-md">
                     <td className="px-6 py-4 whitespace-nowrap text-sm sm:text-base font-medium text-gray-900">
-                      {item.name}
+                      {merch.name}
                     </td>
-                    {/* Code column */}
-                    <td className="px-6 py-4 whitespace-nowrap text-sm sm:text-base font-medium text-gray-500">
-                      {item.code}
+
+                    <td className="px-6 py-4 whitespace-nowrap text-sm sm:text-base font-medium text-gray-900">
+                      {merch.email}
                     </td>
-                    {/* Price column */}
-                    <td className="px-6 py-4 whitespace-nowrap text-sm sm:text-base font-medium text-gray-500">
-                      {item.price}
+
+                    <td className="px-6 py-4 whitespace-nowrap text-sm sm:text-base font-medium text-gray-900">
+                      {merch.phone}
                     </td>
-                    {/* Quantity column */}
-                    <td className="px-6 py-4 whitespace-nowrap text-sm sm:text-base font-medium text-gray-500">
-                      {item.quantity}
+
+                    <td className="px-6 py-4 whitespace-nowrap text-sm sm:text-base font-medium text-gray-900">
+                      {merch.address}
                     </td>
-                    {/* Edit button column */}
-                    <td className="px-6 py-4 whitespace-nowrap text-sm sm:text-base font-medium text-gray-500">
+                    <td className="px-6 py-4 whitespace-nowrap text-sm sm:text-base font-medium text-gray-900">
                       <Link
-                        href={`./editItems/${item.id}`}
-                        className="btn-edit block w-full rounded-md border-0 px-3 py-1.5 text-white bg-indigo-600 sm:text-sm sm:leading-6"
+                        href={`./editUsers/${merch.id}`}
+                        className="btn-edit block w-full rounded-md border-0 px-3 py-1.5 text-white bg-green-600 sm:text-sm sm:leading-6"
                       >
-                        Edit
-                      </Link>
-                    </td>
-                    {/* Delete button column */}
-                    <td className="px-6 py-4 whitespace-nowrap text-sm sm:text-base text-gray-500">
-                      <Link
-                        href={`./deleteItems/${item.id}`}
-                        className="block w-full rounded-md border-0 px-1.5 py-1.5 text-white bg-red-500 sm:text-sm sm:leading-6"
-                      >
-                        Delete
+                        Mail
                       </Link>
                     </td>
                   </tr>
@@ -108,7 +92,7 @@ export default async function ViewItem() {
               href="./"
               className="block px-5 py-2 font-semibold leading-6 text-indigo-600 hover:text-indigo-500 bg-gray-200 rounded-lg"
             >
-              <i className="fa-solid fa-arrow-left pr-2"></i> Back
+              Return
             </a>
           </div>
         </div>

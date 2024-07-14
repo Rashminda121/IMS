@@ -29,20 +29,14 @@ const SigninPage = () => {
       if (response.ok) {
         if (result.manager) {
           // Redirect to '/manager' if authenticated as manager
-          window.location.href = `/manager?email=${encodeURIComponent(
-            data.email
-          )}`;
+          window.location.href = "/manager";
         } else if (result.admin) {
           // Redirect to '/manager' if authenticated as manager
-          window.location.href = `/admin?email=${encodeURIComponent(
-            data.email
-          )}`;
+          window.location.href = "/admin";
         } else {
           // Redirect to '/home' if authenticated as user
           setTimeout(() => {
-            window.location.href = `/home?email=${encodeURIComponent(
-              data.email
-            )}`;
+            window.location.href = "/home";
           }, 1000);
         }
         // Store email in sessionStorage
