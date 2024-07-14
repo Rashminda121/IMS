@@ -3,6 +3,7 @@
 import Navbar from "@/app/(routes)/components/navbar";
 import React, { useState } from "react";
 import type { Item } from "@prisma/client";
+import "@fortawesome/fontawesome-free/css/all.min.css";
 
 const EditItem = ({ item }: { item: Item }) => {
   const [alertMessage, setAlertMessage] = useState<string | null>(null);
@@ -175,7 +176,7 @@ const EditItem = ({ item }: { item: Item }) => {
               href="../items"
               className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500"
             >
-              Return
+              <i className="fa-solid fa-arrow-left pr-2"></i> Back
             </a>
           </p>
         </div>

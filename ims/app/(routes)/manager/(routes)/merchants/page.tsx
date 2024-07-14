@@ -19,20 +19,12 @@ export default async function ViewMerchants() {
               src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
               className="mx-auto h-10 w-auto"
             />
-            <h2 className="mt-10 text-center text-3xl font-bold leading-9 tracking-tight text-gray-900">
+            <h2 className="mt-10 mb-5 text-center text-3xl font-bold leading-9 tracking-tight text-gray-900">
               View Merchants
             </h2>
           </div>
-          <div className="mt-7">
-            <a
-              href="./addMerchant"
-              className="p-3 bg-indigo-700 text-white rounded-lg sm:text-sm md:text-md"
-            >
-              Add Merchant
-            </a>
-          </div>
 
-          <div className="overflow-x-auto overflow-y-auto mt-5">
+          <div className="overflow-x-auto overflow-y-auto mt-10">
             <table className="min-w-full divide-y divide-gray-200">
               <thead className="bg-indigo-700 text-white">
                 <tr className="text-center">

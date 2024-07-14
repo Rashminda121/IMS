@@ -160,7 +160,7 @@ const AddItem = () => {
           <p className="mt-5 text-center text-sm text-gray-500">
             {" "}
             <a
-              href="./manager"
+              href="./items"
               className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500"
             >
               <i className="fa-solid fa-arrow-left pr-2"></i> Back

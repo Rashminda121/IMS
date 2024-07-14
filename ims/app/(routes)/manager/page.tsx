@@ -4,8 +4,11 @@ import "@fortawesome/fontawesome-free/css/all.min.css";
 import Navbar from "@/app/(routes)/components/navbar";
 import React, { useState } from "react";
 import Link from "next/link";
+import { getItemCount, getMerchantCount } from "@/lib/counts";
 
-const Manager = () => {
+const Manager = async () => {
+  const merchantCount = await getMerchantCount();
+  const itemCount = await getItemCount();
   return (
     <>
       <Navbar />
@@ -27,20 +30,24 @@ const Manager = () => {
               <p className="text-2xl sm:text-xl md:text-2xl text-black font-bold">
                 <i className="fa-solid fa-bag-shopping pr-4"></i>Items
               </p>
-              <h1 className="text-2xl text-indigo-700 font-bold mt-2">20</h1>
+              <h1 className="text-2xl text-indigo-700 font-bold mt-2">
+                - {itemCount} -
+              </h1>
             </div>
             <div className="p-10 bg-slate-100 border border-gray-200 shadow-md hover:shadow-xl hover:scale-105 transition duration-300 w-full">
               <p className="text-2xl sm:text-xl md:text-2xl text-black font-bold ">
                 <i className="fa-solid fa-person pr-4"></i>Merchants
               </p>
-              <h1 className="text-2xl text-indigo-700 font-bold mt-2">20</h1>
+              <h1 className="text-2xl text-indigo-700 font-bold mt-2">
+                - {merchantCount} -
+              </h1>
             </div>
           </div>
         </div>
 
         <div className="flex justify-center mt-5">
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 text-center">
-            <a href="./viewItems">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 gap-3 text-center">
+            <a href="./manager/items">
               <div className="p-5 bg-indigo-600 rounded-lg shadow-md hover:shadow-xl hover:scale-105 transition duration-300 ">
                 <h2 className="text-md sm:text-xl md:text-2xl text-white font-semibold">
                   <i className="fa-solid fa-eye pr-4"></i> View Items
@@ -48,16 +55,11 @@ const Manager = () => {
               </div>
             </a>
             <div className="p-5 bg-indigo-600 rounded-lg shadow-md hover:shadow-xl hover:scale-105 transition duration-300">
-              <Link href={"./addItems"}>
-                <h2 className="text-md sm:text-xl md:text-2xl text-white font-semibold">
-                  <i className="fa-solid fa-pencil pr-4"></i>Add Items
+              <a href="./manager/merchants">
+                <h2 className="text-sm sm:text-xl md:text-2xl text-white font-semibold">
+                  <i className="fa-solid fa-person pr-4"></i>Merchants
                 </h2>
-              </Link>
-            </div>
-            <div className="p-5 bg-indigo-600 rounded-lg shadow-md hover:shadow-xl hover:scale-105 transition duration-300">
-              <h2 className="text-sm sm:text-xl md:text-2xl text-white font-semibold">
-                <i className="fa-solid fa-person pr-4"></i>Merchants
-              </h2>
+              </a>
             </div>
           </div>
         </div>
