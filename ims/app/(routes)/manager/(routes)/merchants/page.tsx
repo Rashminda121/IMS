@@ -66,7 +66,7 @@ export default async function ViewMerchants() {
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm sm:text-base font-medium text-gray-900">
                       <Link
-                        href={`./editUsers/${merch.id}`}
+                        href={`./sendMail/${merch.id}`}
                         className="btn-edit block w-full rounded-md border-0 px-3 py-1.5 text-white bg-green-600 sm:text-sm sm:leading-6"
                       >
                         Mail
