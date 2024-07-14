@@ -1,10 +1,10 @@
 // Import necessary modules and components
 "use client";
-import Navbar from "@/app/(routes)/components/navbar";
+
 import { db } from "@/lib/db";
-import Link from "next/link";
 import React, { useState } from "react";
 import "@fortawesome/fontawesome-free/css/all.min.css";
+import Navbar from "../../components/navbar";
 
 export default async function ViewItem() {
   const items = await db.item.findMany();
@@ -74,7 +74,7 @@ export default async function ViewItem() {
           {/* Return link */}
           <div className="mt-5 text-center">
             <a
-              href="./manager"
+              href="./userHome"
               className="block px-5 py-2 font-semibold leading-6 text-indigo-600 hover:text-indigo-500 bg-gray-200 rounded-lg"
             >
               Return

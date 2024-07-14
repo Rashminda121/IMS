@@ -1,7 +1,7 @@
 // LandingPage.tsx
 "use client";
 import React, { useState } from "react";
-import "../(routes)/(other)/home/style.css";
+import "./(other)/userHome/style.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import UserNavbar from "./components/userNavbar";
 

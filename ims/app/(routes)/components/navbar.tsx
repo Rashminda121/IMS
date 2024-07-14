@@ -33,7 +33,7 @@ export default function Navbar() {
             type="button"
             className="text-white bg-indigo-700 hover:bg-indigo-500 focus:ring-4 focus:outline-none focus:ring-indigo-300 font-medium rounded-lg text-sm px-4 py-2 text-center dark:bg-indigo-600 dark:hover:bg-indigo-700 dark:focus:ring-indigo-800"
           >
-            Login
+            <a href="./sign-in">Logout</a>
           </button>
           <button
             onClick={toggleMenu}
@@ -81,7 +81,7 @@ export default function Navbar() {
             </li>
             <li>
               <a
-                href="#"
+                href="./about/userAbout"
                 className={`block py-2 px-3 rounded ${
                   activeMenuItem === "About"
                     ? "text-indigo-600 bg-gray-100 dark:bg-gray-700 dark:text-white"
