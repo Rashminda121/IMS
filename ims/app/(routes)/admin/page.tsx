@@ -37,7 +37,7 @@ const Admin = async () => {
             </div>
             <div className="p-10 bg-slate-100 border border-gray-200 shadow-md hover:shadow-xl hover:scale-105 transition duration-300 w-full">
               <p className="text-2xl sm:text-xl md:text-2xl text-black font-bold ">
-                <i className="fa-solid fa-person pr-4"></i>Users
+                <i className="fa-solid fa-pencil pr-4"></i>Users
               </p>
               <h1 className="text-2xl text-indigo-700 font-bold mt-2">
                 - {userCount} -
@@ -59,7 +59,7 @@ const Admin = async () => {
             <a href="./admin/items">
               <div className="p-5 bg-indigo-600 rounded-lg shadow-md hover:shadow-xl hover:scale-105 transition duration-300 ">
                 <h2 className="text-md sm:text-xl md:text-2xl text-white font-semibold">
-                  <i className="fa-solid fa-eye pr-4"></i>Items
+                  <i className="fa-solid fa-bag-shopping pr-4"></i>Items
                 </h2>
               </div>
             </a>

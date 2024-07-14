@@ -33,7 +33,7 @@ export default function ManagerNavbar() {
             type="button"
             className="text-white bg-indigo-700 hover:bg-indigo-500 focus:ring-4 focus:outline-none focus:ring-indigo-300 font-medium rounded-lg text-sm px-4 py-2 text-center dark:bg-indigo-600 dark:hover:bg-indigo-700 dark:focus:ring-indigo-800"
           >
-            <a href="../">Logout</a>
+            <a href="../sign-in">Logout</a>
           </button>
           <button
             onClick={toggleMenu}
