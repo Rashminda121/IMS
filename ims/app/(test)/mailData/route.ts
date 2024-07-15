@@ -32,7 +32,7 @@ export async function POST(req: Request) {
 
     // Return success response
     return new NextResponse(
-      JSON.stringify({ success: true, message: "Email sent successfully" }),
+      JSON.stringify({ success: true, message: "Email Sent Successfully" }),
       { status: 200 }
     );
   } catch (error) {
